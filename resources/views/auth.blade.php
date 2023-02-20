@@ -19,8 +19,9 @@
     <style>
         html,
         body {
-            background: rgb(231, 196, 254);
-            background: linear-gradient(90deg, rgba(231, 196, 254, 1) 0%, rgba(119, 202, 244, 1) 50%, rgba(86, 196, 159, 1) 100%);
+            background: rgb(0, 0, 0);
+            background: linear-gradient(90deg, rgba(0, 0, 0, 1) 0%, rgba(68, 98, 113, 1) 50%, rgba(43, 23, 29, 1) 100%);
+
             height: 100%;
         }
 
@@ -36,24 +37,26 @@
 <body>
 
     <div class="container">
+
         <div class="row justify-content-center align-items-center" style="height: 100%;">
+
             <div class="col-md-6">
-                <h2 class="text-center text-primary mb-4">WELCOME TO PLP SOCIAL MEDIA</h2>
-                <h2 class="text-center text-white mb-4">Login</h2>
+                <h2 class="text-center text-white mb-4">Login to PLP Social Media</h2>
+
                 <form>
                     <div class="form-group">
-                        <label for="email" class="">Email address</label>
+                        <label for="email" class="text-white">Email address</label>
                         <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
                             placeholder="Enter email">
-                        <small id="emailHelp" class="form-text text-muted ">We'll never share your email with anyone
+                        <small id="emailHelp" class="form-text text-info ">We'll never share your email with anyone
                             else.</small>
                     </div>
                     <div class="form-group">
-                        <label for="password text-white ">Password</label>
+                        <label for="password" class="text-white">Password</label>
                         <input type="password" class="form-control" id="password" placeholder="Password">
                     </div>
-                    <button type="submit" class="btn btn-primary">Login</button>
-                    <button type="button" class="btn btn-link" data-toggle="modal"
+                    <button type="submit" class="btn btn-dark">Login</button>
+                    <button type="button" class="btn btn-secondary" data-toggle="modal"
                         data-target="#createAccountModal">Create Account</button>
                 </form>
             </div>

@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PostController;
+use Illuminate\Http\Request;
+use App\Models\Post;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,8 +16,10 @@ use App\Http\Controllers\PostController;
 |
 */
 
-Route::get('/main', function () {
-    // $request->session()->put("isUserValid", true);
+Route::get('/main', function (Request $request) {
+
+    $posts=Post::all();
+    $request->session()->put("posts", $posts); ;
     return view('mainpage');
 });
 Route::get('/myposts', function () {

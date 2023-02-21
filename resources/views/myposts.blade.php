@@ -108,8 +108,7 @@
                         <div class="card mb-4">
                             <h4 class="card-title text-primary">Posted by {{ $post->posted_by }}</h4>
                             <p class="card-title">{{ $post->caption }}</p>
-                            <img src="{{ asset('storage/images/' . $post->image) }}" class="card-img-top"
-                                alt="...">
+                            <img src="{{ $post->image }}" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <div class="row">
                                     <form action="/delete/{{ $post->id }}" method="GET">

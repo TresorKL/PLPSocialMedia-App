@@ -111,8 +111,7 @@
                     <div class="card mb-4">
                         <h4 class="card-title text-primary">Posted by {{ Session::get('post')->posted_by }}</h4>
                         <p class="card-title">{{ Session::get('post')->caption }}</p>
-                        <img src="{{ asset('storage/images/' . Session::get('post')->image) }}" class="card-img-top"
-                            alt="...">
+                        <img src="{{ Session::get('post')->image }}" class="card-img-top" alt="...">
                         <div class="card-body">
                             <div class="row">
                                 <button type="button" class="btn btn-primary m-2" data-toggle="modal"

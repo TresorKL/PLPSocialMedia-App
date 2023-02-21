@@ -25,10 +25,14 @@ class PostController extends Controller
         //$file=$request->file('image');
        // $path = Storage::disk('s3')->put( 'images',  $file);
         //$path = Storage::disk('s3')->url($path);
+        $filePath = 'images/' . $image;
+
+        // Get the URL for the uploaded file
+        $url = Storage::disk('s3')->url($filePath);
         $user->post()->create([
             "posted_by"=>$user->name,
             "caption"=>$request->caption,
-            "image"=>$image,
+            "image"=>$filePath,
             "likes"=>0
          ]);
 

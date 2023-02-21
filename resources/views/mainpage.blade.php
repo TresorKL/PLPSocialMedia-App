@@ -111,11 +111,10 @@
                         <div class="card mb-4">
                             <h4 class="card-title text-primary">Posted by {{ $post->posted_by }}</h4>
                             <p class="card-title">{{ $post->caption }}</p>
-                            <img src="{{ storage_path() . '/images/' . $post->image }}" class="card-img-top"
-                                alt="{{ $post->image }}">
+                            <img src="{{ $post->image }}" class="card-img-top" alt="{{ $post->image }}">
                             <div class="card-body">
                                 <div class="row">
-                                    <p>{{ storage_path() . '/images/' . $post->image }}</p>
+
                                     <form action="/comments/{{ $post->id }}" method="POST">
                                         @csrf
                                         <button type="submit" class="btn btn-primary m-2">

@@ -47,7 +47,7 @@ class PostController extends Controller
                 "likes"=>0
              ]);
     
-             $posts=Post::where('user_app_id','=',$id)->get();
+             $posts=Post::where('user_app_id','=',$id)->latest('created_at')->get();
          $request->session()->put("posts", $posts); 
              return redirect("/main"); 
         }
@@ -57,7 +57,7 @@ class PostController extends Controller
     function getUserPosts(Request $request){
         $id = $request->session()->get("user")->id; 
         // $user=UserApp::find($id);
-        $posts=Post::where('user_app_id','=',$id)->get();
+        $posts=Post::where('user_app_id','=',$id)->latest('created_at')->get();
         $request->session()->put("posts", $posts);
 
         return view("myposts");
@@ -70,7 +70,7 @@ class PostController extends Controller
         
         Post::where('id','=',$id )->delete();
         // $user=UserApp::find($id);
-        $posts=Post::where('user_app_id','=',$userId )->get();
+        $posts=Post::where('user_app_id','=',$userId )->latest('created_at')->get();;
         $request->session()->put("posts", $posts);
 
         return view("myposts");;  
@@ -84,7 +84,7 @@ class PostController extends Controller
         $post->caption=$request->caption;
         $post->save();
         // $user=UserApp::find($id);
-        $posts=Post::where('user_app_id','=',$userId )->get();
+        $posts=Post::where('user_app_id','=',$userId )->latest('created_at')->get();;
         $request->session()->put("posts", $posts);
 
         return view("myposts");

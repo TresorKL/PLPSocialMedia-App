@@ -18,7 +18,7 @@ use App\Models\Post;
 
 Route::get('/main', function (Request $request) {
 
-    $posts=Post::all();
+    $posts=Post::orderBy('created_at', 'desc')->get();
     $request->session()->put("posts", $posts); ;
     return view('mainpage');
 });

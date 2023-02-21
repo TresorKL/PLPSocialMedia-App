@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('comment_text');
             $table->string('commented_by');
-            $table->interger('post_id');
+            $table->integer('post_id');
             $table->timestamps();
         });
     }

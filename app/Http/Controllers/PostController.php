@@ -20,7 +20,7 @@ class PostController extends Controller
 
         $imageName=$request->file('image')->getClientOriginalName();
         $image=$current_date_time.$id.$imageName;
-        $request->file('image')->storeAs('images/',$image,'s3');
+        $request->file('image')->store('images/','s3');
        // Storage::disk('public')->put('storage/images/', $file);
         $user->post()->create([
             "posted_by"=>$user->name,

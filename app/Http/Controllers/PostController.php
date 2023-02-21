@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
 use App\Models\UserApp;
 use App\Models\Comment;
@@ -20,8 +21,9 @@ class PostController extends Controller
 
         $imageName=$request->file('image')->getClientOriginalName();
         $image=$current_date_time.$id.$imageName;
-        $request->file('image')->store('images','s3');
-       // Storage::disk('public')->put('storage/images/', $file);
+        //$request->file('image')->store('images','s3');
+        $file=$request->file('image');
+       Storage::disk('s3')->put( $image, $file,file_get_contents( $file));
         $user->post()->create([
             "posted_by"=>$user->name,
             "caption"=>$request->caption,

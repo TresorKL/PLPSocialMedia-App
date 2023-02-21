@@ -32,7 +32,7 @@ class PostController extends Controller
         $user->post()->create([
             "posted_by"=>$user->name,
             "caption"=>$request->caption,
-            "image"=>$filePath,
+            "image"=>$url,
             "likes"=>0
          ]);
 

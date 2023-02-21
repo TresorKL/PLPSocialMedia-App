@@ -55,7 +55,7 @@
                     </form>
                 </li>
                 <li class="nav-item active m-2">
-                    <form action="/logout" method="POST">
+                    <form action="/logout" method="GET">
                         @csrf
                         <button type="submit" class="btn btn-danger">Logout</button>
                     </form>

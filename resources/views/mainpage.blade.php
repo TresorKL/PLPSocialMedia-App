@@ -111,8 +111,7 @@
                         <div class="card mb-4">
                             <h4 class="card-title text-primary">Posted by {{ $post->posted_by }}</h4>
                             <p class="card-title">{{ $post->caption }}</p>
-                            <img src="{{ Storage::disk('s3')->url($post->image) }}" class="card-img-top"
-                                alt="{{ $post->image }}">
+                            <img src="{{ $post->image }}" class="card-img-top" alt="{{ $post->image }}">
                             <div class="card-body">
                                 <div class="row">
 

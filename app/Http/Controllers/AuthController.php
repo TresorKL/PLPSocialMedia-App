@@ -33,7 +33,7 @@ class AuthController extends Controller
         ->where('password', '=', $request->password)->first();
 
         if($user!=null){
-            $posts=Post::all();
+            $posts=Post::orderBy('created_at', 'desc')->get();
             $request->session()->put("user", $user); 
             $request->session()->put("posts", $posts); 
          return view("mainpage");

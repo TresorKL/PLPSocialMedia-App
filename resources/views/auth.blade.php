@@ -42,18 +42,29 @@
 
             <div class="col-md-6">
                 <h2 class="text-center text-white mb-4">Login to PLP Social Media</h2>
+                {{-- INVALID AUTH --}}
+                @if (Session::has('isUserValid'))
 
-                <form>
+                    @if (Session::get('isUserValid') == 'yes')
+                        <p id="" class="text-danger">Invalid credential eiter the email or
+                            password is wrong</p>
+                    @endif
+
+                @endif
+                <form action="/login" method="POST">
+                    @csrf
+
                     <div class="form-group">
                         <label for="email" class="text-white">Email address</label>
-                        <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
-                            placeholder="Enter email">
+                        <input type="email" name="email" class="form-control" id="email"
+                            aria-describedby="emailHelp" placeholder="Enter email">
                         <small id="emailHelp" class="form-text text-info ">We'll never share your email with anyone
                             else.</small>
                     </div>
                     <div class="form-group">
                         <label for="password" class="text-white">Password</label>
-                        <input type="password" class="form-control" id="password" placeholder="Password">
+                        <input type="password" name="password" class="form-control" id="password"
+                            placeholder="Password">
                     </div>
                     <button type="submit" class="btn btn-dark">Login</button>
                     <button type="button" class="btn btn-secondary" data-toggle="modal"
@@ -74,23 +85,30 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form action="/account" method="POST">
+                        @csrf
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Name"
+                                required>
+                        </div>
                         <div class="form-group">
                             <label for="createEmail">Email address</label>
                             <input type="email" class="form-control" id="createEmail"
-                                aria-describedby="createEmailHelp" placeholder="Enter email">
+                                aria-describedby="createEmailHelp" placeholder="Enter email" name="email" required>
                             <small id="createEmailHelp" class="form-text text-muted">We'll never share your email with
                                 anyone else.</small>
                         </div>
                         <div class="form-group">
                             <label for="createPassword">Password</label>
-                            <input type="password" class="form-control" id="createPassword" placeholder="Password">
+                            <input type="password" class="form-control" id="createPassword" name="password"
+                                placeholder="Password" required>
                         </div>
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label for="confirmPassword">Confirm Password</label>
                             <input type="password" class="form-control" id="confirmPassword"
                                 placeholder="Confirm Password">
-                        </div>
+                        </div> --}}
                         <button type="submit" class="btn btn-primary">Create Account</button>
                     </form>
                 </div>

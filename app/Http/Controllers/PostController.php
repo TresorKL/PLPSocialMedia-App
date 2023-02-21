@@ -36,7 +36,7 @@ class PostController extends Controller
             "likes"=>0
          ]);
 
-         $posts=Post::all();
+         $posts=Post::where('user_app_id','=',$id)->get();
          $request->session()->put("posts", $posts); 
 
          return redirect("/main");
@@ -47,7 +47,7 @@ class PostController extends Controller
                 "likes"=>0
              ]);
     
-             $posts=Post::all();
+             $posts=Post::where('user_app_id','=',$id)->get();
          $request->session()->put("posts", $posts); 
              return redirect("/main"); 
         }
@@ -98,7 +98,7 @@ class PostController extends Controller
         $post->likes=$currentLikes+1;
         $post->save();
         // $user=UserApp::find($id);
-        $posts=Post::all();
+        $posts=Post::orderBy('created_at', 'desc')->get();
         $request->session()->put("posts", $posts);
 
         return redirect("/main");  

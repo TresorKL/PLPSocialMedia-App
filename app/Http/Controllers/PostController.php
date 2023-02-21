@@ -23,7 +23,7 @@ class PostController extends Controller
         $image=$current_date_time.$id.$imageName;
         $request->file('image')->storeas('/images/','s3');
         $file=$request->file('image');
-        $path = Storage::disk('s3')->put( 'images', file_get_contents( $file));
+        $path = Storage::disk('s3')->put( 'images',  $file);
         $path = Storage::disk('s3')->url($path);
         $user->post()->create([
             "posted_by"=>$user->name,

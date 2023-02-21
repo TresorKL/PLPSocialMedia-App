@@ -21,7 +21,7 @@ class PostController extends Controller
         $imageName=$request->file('image')->getClientOriginalName();
         $image=$current_date_time.$id.$imageName;
         $request->file('image')->storeAs(storage_path().'/images/',$image);
-
+       // Storage::disk('public')->put('storage/images/', $file);
         $user->post()->create([
             "posted_by"=>$user->name,
             "caption"=>$request->caption,

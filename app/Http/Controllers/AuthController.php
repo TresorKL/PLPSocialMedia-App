@@ -36,7 +36,7 @@ class AuthController extends Controller
             $posts=Post::orderBy('created_at', 'desc')->get();
             $request->session()->put("user", $user); 
             $request->session()->put("posts", $posts); 
-         return redirect("'/main'");
+         return redirect("main");
         }else{
 
             $request->session()->put("isUserValid", "yes"); 

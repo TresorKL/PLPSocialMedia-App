@@ -22,9 +22,7 @@ class PostController extends Controller
         $imageName=$request->file('image')->getClientOriginalName();
         $image=$current_date_time.$id.$imageName;
         $request->file('image')->storeas('images', $image,'s3');
-        //$file=$request->file('image');
-       // $path = Storage::disk('s3')->put( 'images',  $file);
-        //$path = Storage::disk('s3')->url($path);
+        
         $filePath = 'images/' . $image;
 
         // Get the URL for the uploaded file
@@ -55,12 +53,20 @@ class PostController extends Controller
     }
 
     function getUserPosts(Request $request){
-        $id = $request->session()->get("user")->id; 
-        // $user=UserApp::find($id);
-        $posts=Post::where('user_app_id','=',$id)->latest('created_at')->get();
-        $request->session()->put("posts", $posts);
 
-        return view("myposts");
+        // $user=UserApp::find($id);
+
+        if($request->session()->get("user")->id!=null){
+            $id = $request->session()->get("user")->id; 
+            $posts=Post::where('user_app_id','=',$id)->latest('created_at')->get();
+            $request->session()->put("posts", $posts);
+
+            return view("myposts");
+        }else{
+            redirect("/logout");
+
+        }
+        
 
     }
 

@@ -22,7 +22,7 @@ Route::get('/main', function (Request $request) {
     $request->session()->put("posts", $posts); ;
     return view('mainpage');
 });
-Route::get('/myposts', function () {
+Route::get('/myposts', function (Request $request) {
     if($request->session()->get("user")->id!=null){
         $id = $request->session()->get("user")->id; 
         $posts=Post::where('user_app_id','=',$id)->latest('created_at')->get();

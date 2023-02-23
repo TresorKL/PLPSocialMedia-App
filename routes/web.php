@@ -23,8 +23,16 @@ Route::get('/main', function (Request $request) {
     return view('mainpage');
 });
 Route::get('/myposts', function () {
-    // $request->session()->put("isUserValid", true);
-    return view('myposts');
+    if($request->session()->get("user")->id!=null){
+        $id = $request->session()->get("user")->id; 
+        $posts=Post::where('user_app_id','=',$id)->latest('created_at')->get();
+        $request->session()->put("posts", $posts);
+
+        return view("myposts");
+    }else{
+        redirect("/logout");
+
+    }
 });
 Route::get('/',[AuthController::class,'welcome']);
 Route::get('login/',[AuthController::class,'welcome']);

@@ -30,7 +30,7 @@ Route::get('/myposts', function (Request $request) {
 
         return view("myposts");
     }else{
-        redirect("/logout");
+        return redirect("/logout");
 
     }
 });

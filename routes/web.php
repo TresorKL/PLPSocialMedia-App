@@ -36,7 +36,7 @@ Route::get('/myposts', function (Request $request) {
 });
 Route::get('/',[AuthController::class,'welcome']);
 Route::get('login/',[AuthController::class,'welcome']);
- 
+
 Route::post('account/',[AuthController::class,'createAccount']);
 Route::post('login/',[AuthController::class,'login']);
 Route::post('addpost/',[PostController::class,'addpost']);
